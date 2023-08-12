@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../../Shared/Navbar';
-
+import {BiSolidCart} from 'react-icons/bi';
 const ShowSingleProduct = () => {
     const {id} = useParams("");
     const [productData,setProductData] = useState("");
@@ -26,7 +26,10 @@ const ShowSingleProduct = () => {
                         {/* <h6 class="card-subtitle"></h6> */}
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-6">
-                                <div class="white-box text-center"><img src={productData.images[0]} class="img-responsive"/></div>
+                                <div class="white-box text-center">
+                                {/* <img src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=740&t=st=1691854518~exp=1691855118~hmac=51e2ee3d0ed253514d9924dbd93600479753ff6095eb39dc5362ec592243ad98" height ={400} width={400} class="img-responsive"/> */}
+                                <img src = {productData.thumbnail}/>
+                                </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-6">
                                 <h4 class="box-title mt-5">Product description</h4>
@@ -35,14 +38,13 @@ const ShowSingleProduct = () => {
                                     {productData.price}"/-"<small class="text-success">({productData.discountPercentage}%) OFF</small>
                                 </h2>
                                 <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <BiSolidCart/>                                
                                 </button>
                                 <button class="btn btn-primary btn-rounded">Buy Now</button>
                                 <h3 class="box-title mt-5">Key Highlights</h3>
                                 <ul class="list-unstyled">
-                                    <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                    <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                    <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                    <li><i class="fa fa-check text-success"></i>Ratings : {productData.rating}/5</li>
+                                    <li><i class="fa fa-check text-success"></i>Stock : {productData.stock}</li>
                                 </ul>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -52,64 +54,21 @@ const ShowSingleProduct = () => {
                                         <tbody>
                                             <tr>
                                                 <td width="390">Brand</td>
-                                                <td>Stellar</td>
+                                                <td>{productData.brand}</td>
                                             </tr>
                                             <tr>
                                                 <td>Delivery Condition</td>
-                                                <td>Knock Down</td>
+                                                <td>Packed</td>
                                             </tr>
                                             <tr>
-                                                <td>Seat Lock Included</td>
-                                                <td>Yes</td>
+                                                <td>Category</td>
+                                                <td>{productData.category}</td>
                                             </tr>
                                             <tr>
-                                                <td>Type</td>
-                                                <td>Office Chair</td>
+                                                <td>Description</td>
+                                                <td>{productData.description}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Style</td>
-                                                <td>Contemporary&amp;Modern</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Wheels Included</td>
-                                                <td>Yes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Upholstery Included</td>
-                                                <td>Yes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Upholstery Type</td>
-                                                <td>Cushion</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Head Support</td>
-                                                <td>No</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Suitable For</td>
-                                                <td>Study&amp;Home Office</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Adjustable Height</td>
-                                                <td>Yes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Model Number</td>
-                                                <td>F01020701-00HT744A06</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Armrest Included</td>
-                                                <td>Yes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Care Instructions</td>
-                                                <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Finish Type</td>
-                                                <td>Matte</td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>

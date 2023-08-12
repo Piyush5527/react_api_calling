@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GetAllProducts from './components/Products/GetAllProducts';
 import ShowSingleProduct from './components/Products/ShowSingleProduct';
+import AddNewProduct from './components/Products/AddNewProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -16,6 +17,7 @@ root.render(
     <Routes>
       <Route path="/" element = {<GetAllProducts/>}></Route>
       <Route path="/viewproduct/:id" element = {<ShowSingleProduct/>}></Route>
+      <Route path="/addnewproduct" element = {<AddNewProduct></AddNewProduct>}></Route>
     </Routes>
   </BrowserRouter>
 );
