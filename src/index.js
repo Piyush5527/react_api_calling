@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GetAllProducts from './components/Products/GetAllProducts';
+import ShowSingleProduct from './components/Products/ShowSingleProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -14,6 +15,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element = {<GetAllProducts/>}></Route>
+      <Route path="/viewproduct/:id" element = {<ShowSingleProduct/>}></Route>
     </Routes>
   </BrowserRouter>
 );
