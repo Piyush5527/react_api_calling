@@ -23,15 +23,22 @@ const GetAllProducts = () => {
     <Fragment>
       <Navbar></Navbar>
       <div className="container mt-5">
-        <h2 className="">All Products</h2>
-        <table className="table table-striped-columns">
+        <div class="row">
+          <div class="col-md-10">              
+            <h2 className="">All Products</h2>
+          </div>
+          <div class="col-md-2">
+            <button className="btn btn-success p-3 ms-5 float-right" onClick={()=>{navigate('/addnewproduct')}}>Add New</button>
+          </div>
+        </div>
+        <table className="table table-striped-columns mt-4">
           <thead>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Ratings</th>
-            <th>Images</th>
-            <th>Actions</th>
+            <th className="h3">Title</th>
+            <th className="h3">Category</th>
+            <th className="h3">Price</th>
+            <th className="h3">Ratings</th>
+            <th className="h3">Images</th>
+            <th className="h3">Actions</th>
           </thead>
           <tbody>
             {products.map((item, index) => {
