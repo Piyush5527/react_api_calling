@@ -15,6 +15,18 @@ const GetAllProducts = () => {
     setProducts(productData.products);
   };
   // console.log(products);
+  const deleteHandler = async(id) =>{
+    const res = await fetch(`https://dummyjson.com/products/${id}`);
+    const response = await res.json();
+    if(res.status === 200)
+    {
+      alert("SuccessFully Deleted");
+    }
+    else
+    {
+      alert("Something Went wrong");
+    }
+  }
 
   useEffect(() => {
     getAllProducts();
@@ -66,13 +78,13 @@ const GetAllProducts = () => {
                     <BiSolidEdit
                       className="text-warning mx-2"
                       onClick={() => {
-                        navigate(`/viewproduct/${item.id}`);
+                        navigate(`/edit/${item.id}`);
                       }}
                     />
                     <MdDelete
                       className="text-danger mx-2"
                       onClick={() => {
-                        navigate(`/viewproduct/${item.id}`);
+                        deleteHandler(item.id);
                       }}
                     />
                   </td>

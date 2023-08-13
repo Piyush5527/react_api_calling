@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import GetAllProducts from './components/Products/GetAllProducts';
 import ShowSingleProduct from './components/Products/ShowSingleProduct';
 import AddNewProduct from './components/Products/AddNewProduct';
+import EditProduct from './components/Products/EditProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -17,7 +17,8 @@ root.render(
     <Routes>
       <Route path="/" element = {<GetAllProducts/>}></Route>
       <Route path="/viewproduct/:id" element = {<ShowSingleProduct/>}></Route>
-      <Route path="/addnewproduct" element = {<AddNewProduct></AddNewProduct>}></Route>
+      <Route path="/addnewproduct" element = {<AddNewProduct/>}></Route>
+      <Route path="/edit/:id" element = {<EditProduct/>}></Route>
     </Routes>
   </BrowserRouter>
 );
