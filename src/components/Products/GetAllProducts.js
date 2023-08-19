@@ -3,6 +3,7 @@ import Navbar from "../../Shared/Navbar";
 import { BiShowAlt, BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // import {GlassesOutline,CreateOutline,TrashBinOutline} from 'react-ionicons';
 
 const GetAllProducts = () => {
@@ -16,16 +17,28 @@ const GetAllProducts = () => {
   };
   // console.log(products);
   const deleteHandler = async(id) =>{
-    const res = await fetch(`https://dummyjson.com/products/${id}`);
-    const response = await res.json();
-    if(res.status === 200)
-    {
-      alert("SuccessFully Deleted");
-    }
-    else
-    {
-      alert("Something Went wrong");
-    }
+    
+    
+      // alert("SuccessFully Deleted");
+      Swal.fire({
+        title: 'Do you want to Delete?',
+        showDenyButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Cancel`,
+      }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          const res = await fetch(`https://dummyjson.com/products/${id}`);
+          // const response = await res.json();
+          if(res.status === 200)
+          {
+            Swal.fire('Saved!', '', 'success')
+          }
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      });
+    
   }
 
   useEffect(() => {
@@ -33,6 +46,7 @@ const GetAllProducts = () => {
   }, []);
   return (
     <Fragment>
+     
       <Navbar></Navbar>
       <div className="container mt-5">
         <div class="row">
@@ -43,7 +57,7 @@ const GetAllProducts = () => {
             <button className="btn btn-success p-3 ms-5 float-right" onClick={()=>{navigate('/addnewproduct')}}>Add New</button>
           </div>
         </div>
-        <table className="table table-striped-columns mt-4">
+         <table className="table table-striped-columns mt-4">
           <thead>
             <th className="h3">Title</th>
             <th className="h3">Category</th>
@@ -92,7 +106,8 @@ const GetAllProducts = () => {
               );
             })}
           </tbody>
-        </table>
+        </table> 
+        
       </div>
     </Fragment>
     // <div></div>

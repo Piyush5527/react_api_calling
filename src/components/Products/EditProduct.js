@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Navbar from '../../Shared/Navbar';
+import Swal from "sweetalert2";
 
 const EditProduct = () => {
     const {id} = useParams("");
@@ -58,8 +59,9 @@ const EditProduct = () => {
           // console.log(res);
           if(res.status === 200)
           {
-            console.log("Success");
-            setShowDialog(showDialog+1);
+            Swal.fire('Saved!', '', 'success')
+            // console.log("Success");
+            // setShowDialog(showDialog+1);
           }
           else{
             console.log("Failure");
